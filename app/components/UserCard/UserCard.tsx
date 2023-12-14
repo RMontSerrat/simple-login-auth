@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Card, Flex, Avatar, Text, Button } from '@radix-ui/themes';
+import { Box, Card, Flex, Heading, Avatar, Text, Button } from '@radix-ui/themes';
 
 type User = {
   image: string;
@@ -26,38 +26,24 @@ export function UserCard({ user, onLogout }: UserCardProps) {
           size="3"
           src={image}
           radius="full"
-          fallback="T"
+          fallback={name[0]}
         />
+
         <Box>
-          <Text as="div" size="5" weight="bold">
+          <Heading as="h1">
             {name}
-          </Text>
+          </Heading>
         </Box>
       </Flex>
       <Flex mt="3" gap="1" direction="column">
-        <Text as="div" size="2" color="gray">
-          <strong>Gender</strong>:
-          <span>{gender}</span>
-        </Text>
-        <Text as="div" size="2" color="gray">
-          <strong>Age</strong>:
-          <span>{age}</span>
-        </Text>
-        <Text as="div" size="2" color="gray">
-          <strong>Email</strong>:
-          <span>{email}</span>
-        </Text>
-        <Text as="div" size="2" color="gray">
-          <strong>Phone</strong>:
-          <span>{phone}</span>
-        </Text>
-        <Text as="div" size="2" color="gray">
-          <strong>Company</strong>:
-          <span>{companyName}</span>
-        </Text>
+        <Text as="div" size="2" color="gray"><strong>Gender</strong>: <span>{gender}</span></Text>
+        <Text as="div" size="2" color="gray"><strong>Age</strong>: <span>{age}</span></Text>
+        <Text as="div" size="2" color="gray"><strong>Email</strong>: <span>{email}</span></Text>
+        <Text as="div" size="2" color="gray"><strong>Phone</strong>: <span>{phone}</span></Text>
+        <Text as="div" size="2" color="gray"><strong>Company</strong>: <span>{companyName}</span></Text>
       </Flex>
       <Flex mt="3" justify="end">
-        <Button size="2" onClick={onLogout}>Logout</Button>
+        <Button size="2" onClick={onLogout} aria-label="Logout">Logout</Button>
       </Flex>
     </Card>
   )

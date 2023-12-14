@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-async function getAuth() {
+export async function getAuth() {
   const cookieStore = cookies()
   const authToken = cookieStore.get('authToken');
   return authToken;
