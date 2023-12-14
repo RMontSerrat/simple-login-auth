@@ -1,17 +1,10 @@
-import Cookies from 'cookies';
+import { UserTemplate } from './templates/User';
+import { withAuth } from '@/app/withAuth';
 
-export const getServerSideProps = async (context) => {
-  const cookies = new Cookies(context.req, context.res);
-  const authToken = cookies.get('auth_token');
+async function Home() {
+  return (
+    <UserTemplate />
+  )
+}
 
-  if (!authToken) {
-    return {
-      redirect: {
-        destination: '/login', // Substitua pela sua rota de login
-        permanent: false,
-      },
-    };
-  }
-
-  return { props: {} };
-};
+export default withAuth(Home);
