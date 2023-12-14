@@ -3,6 +3,7 @@
 import useSWR from 'swr';
 import api from '@/app/services/api';
 import { useAuth } from '@/app/providers/AuthProvider';
+import { User } from '@/app/services/types';
 
 const fetcher = (url: string) => api.get(url).then(res => res.data);
 

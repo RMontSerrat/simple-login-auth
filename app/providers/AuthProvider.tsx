@@ -5,11 +5,11 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import api from '@/app/services/api';
+import { Token } from '@/app/services/types';
 
 type UserData = Token;
 
 type AuthState = {
-  isLoggedIn: boolean;
   userData: UserData | null;
   loading: boolean;
   error: string | null;
@@ -27,7 +27,6 @@ type AuthProviderProps = {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const router = useRouter();
   const initialUserData = Cookies.get('authToken') ? JSON.parse(Cookies.get('authToken') ?? '') : null;
-  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('authToken'));
   const [userData, setUserData] = useState<UserData | null>(initialUserData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -41,13 +40,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         password
       });
       setLoading(false);
-      setIsLoggedIn(true);
       setUserData(response.data);
       Cookies.set('authToken', JSON.stringify(response.data), { expires: 7 });
       router.push('/');
     } catch (err) {
       setLoading(false);
-      setIsLoggedIn(false);
       setUserData(null);
       if (axios.isAxiosError(err)) {
         setError(err.message);
@@ -59,13 +56,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const logout = () => {
     Cookies.remove('authToken');
-    setIsLoggedIn(false);
     setUserData(null);
     router.push('/login');
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, loading, userData, error, login, logout }}>
+    <AuthContext.Provider value={{ loading, userData, error, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

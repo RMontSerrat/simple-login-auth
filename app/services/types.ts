@@ -1,4 +1,4 @@
-type User = {
+export type User = {
   id: number;
   firstName: string;
   lastName: string;
@@ -18,7 +18,7 @@ type User = {
   };
 }
 
-type Token = {
+export type Token = {
   id: number;
   username: string;
   email: string;

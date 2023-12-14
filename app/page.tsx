@@ -1,5 +1,5 @@
 import { UserTemplate } from './templates/User';
-import { withAuth } from '@/app/withAuth';
+import { withAuth } from '@/app/services/withAuth';
 
 async function Home() {
   return (
