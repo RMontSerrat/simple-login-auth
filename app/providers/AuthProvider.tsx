@@ -1,18 +1,17 @@
 'use client';
 
 import { createContext, useContext, useState, ReactNode } from 'react';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
 type UserData = Token;
-type ErrorData = AxiosError;
 
 type AuthState = {
   isLoggedIn: boolean;
   userData: UserData | null;
   loading: boolean;
-  error: ErrorData | null;
+  error: string | null;
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
 };
@@ -30,11 +29,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get('authToken'));
   const [userData, setUserData] = useState<UserData | null>(initialUserData);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<ErrorData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const login = async (username: string, password: string) => {
     try {
       setLoading(true);
+      setError(null);
       const response = await axios.post<Token>('/auth/login', {
         username,
         password
@@ -42,18 +42,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setLoading(false);
       setIsLoggedIn(true);
       setUserData(response.data);
-      setError(null);
       Cookies.set('authToken', JSON.stringify(response.data), { expires: 7 });
       router.push('/');
     } catch (err) {
       setLoading(false);
       setIsLoggedIn(false);
       setUserData(null);
-
       if (axios.isAxiosError(err)) {
-        setError(err.response?.data as ErrorData);
+        setError(err.message);
       } else {
-        setError(new Error('An unknown error occurred') as ErrorData);
+        setError('An unknown error occurred');
       }
     }
   };

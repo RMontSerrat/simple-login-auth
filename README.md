@@ -28,14 +28,19 @@ Make sure you have Node.js installed on your system (the latest version is recom
    git clone https://github.com/your-username/simple-user-auth.git
    ```
 
-3. Install NPM packages:
+2. Copy the envs:
+   ```sh
+   cp .env.sample .env.local
+   ```
+
+3. Install packages:
    ```sh
    npm install
    ```
 
    or
 
-  ```sh
+   ```sh
    yarn install
    ```
 

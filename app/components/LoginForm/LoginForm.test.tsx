@@ -1,15 +1,13 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { LoginForm } from './index';
-import * as authHook from '../../hooks/useAuth';
-import { AuthContext } from '@/app/providers/AuthProvider';
+import { LoginForm } from './LoginForm';
 
 const mockOnLogout = jest.fn();
 
 describe('LoginForm', () => {
   test('renders the login form', () => {
     render(
-        <LoginForm loading={false} onSubmit={mockOnLogout} />
+        <LoginForm error={null} loading={false} onSubmit={mockOnLogout} />
     );
 
     expect(screen.getByPlaceholderText('Digite seu nome de usuário')).toBeTruthy();
@@ -19,7 +17,7 @@ describe('LoginForm', () => {
 
   test('allows users to enter username and password', () => {
     render(
-        <LoginForm loading={false} onSubmit={mockOnLogout} />
+        <LoginForm error={null} loading={false} onSubmit={mockOnLogout} />
     );
 
     fireEvent.change(screen.getByPlaceholderText('Digite seu nome de usuário'), { target: { value: 'testuser' } });
@@ -31,7 +29,7 @@ describe('LoginForm', () => {
 
   test('calls login function when form is submitted', () => {
     render(
-      <LoginForm loading={false} onSubmit={mockOnLogout} />
+      <LoginForm error={null} loading={false} onSubmit={mockOnLogout} />
     );
 
     fireEvent.click(screen.getByText('Entrar'));
