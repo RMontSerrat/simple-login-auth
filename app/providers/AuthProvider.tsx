@@ -4,6 +4,7 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
+import api from '@/app/services/api';
 
 type UserData = Token;
 
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.post<Token>('/auth/login', {
+      const response = await api.post<Token>('/auth/login', {
         username,
         password
       });
@@ -57,7 +58,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = () => {
-    Cookies.remove('auth');
+    Cookies.remove('authToken');
     setIsLoggedIn(false);
     setUserData(null);
     router.push('/login');
