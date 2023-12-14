@@ -32,12 +32,12 @@ export function LoginForm({ onSubmit, loading, error }: LoginFormProps) {
               <Text as="label" htmlFor="password" color="gray" size="2">Senha</Text>
               <TextField.Input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Digite sua senha" />
             </Box>
+            {error && (
+              <Box mb="2">
+                <Text size="1" color="red">{error}</Text>
+              </Box>
+            )}
           </Flex>
-          {error && (
-            <Box mb="2">
-              <Text size="1" color="red">{error}</Text>
-            </Box>
-        )}
           <Button type="submit" size="3" aria-busy={loading}>
             {loading ? 'Carregando...' : 'Entrar'}
           </Button>
