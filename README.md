@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Simple User Authentication
+
+## About
+This is a simple user authentication application built using React and Next.js. It demonstrates a basic authentication flow, including login functionality with a focus on modern web application practices.
+
+## Key Features
+- **User Login:** Secure login functionality.
+- **Authentication State Management:** Session management using cookies.
+- **Modern UI:** Utilizing Radix UI for a sleek and responsive design.
+
+## Technologies Used
+- **React:** A JavaScript library for building user interfaces.
+- **Next.js:** A React framework that enables functionality such as server-side rendering and generating static websites.
+- **Axios:** A promise-based HTTP client for making HTTP requests.
+- **SWR:** A React Hooks library for data fetching.
+- **js-cookie:** A simple, lightweight JavaScript API for handling cookies.
+- **Radix UI:** Unstyled UI primitives to build your own design system.
+- **Jest:** A delightful JavaScript Testing Framework with a focus on simplicity.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+Make sure you have Node.js installed on your system (the latest version is recommended).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/simple-user-auth.git
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install NPM packages:
+   ```sh
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   or
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  ```sh
+   yarn install
+   ```
 
-## Learn More
+### Running the Application
 
-To learn more about Next.js, take a look at the following resources:
+- **Development Mode**:
+Run `npm run dev` or `yarn dev`. This will start the development server on `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Production Build**:
+Run `npm run build` or `yarn build` to build the application for production.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Start Production Server**:
+After building, you can start the production server by running `npm start` or `yarn start`.
 
-## Deploy on Vercel
+### Testing
+To run tests, execute `npm test` or `yarn test`. This will run Jest tests in watch mode.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Fork the project.
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a pull request.
+
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+

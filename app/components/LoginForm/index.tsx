@@ -2,16 +2,19 @@
 
 import { useState } from 'react';
 import { Box, Card, Flex, Text, TextField, Button } from '@radix-ui/themes';
-import { useAuth } from '@/app/hooks/useAuth';
 
-export function LoginForm() {
-  const { login, loading } = useAuth();
+type LoginFormProps = {
+  onSubmit: (username: string, password: string) => void | Promise<void>;
+  loading: boolean;
+};
+
+export function LoginForm({ onSubmit, loading }: LoginFormProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login(username, password);
+    onSubmit(username, password);
   };
 
   return (

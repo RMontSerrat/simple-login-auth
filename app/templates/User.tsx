@@ -2,7 +2,7 @@
 
 import { UserCard } from '@/app/components/UserCard'
 import { useUser } from '@/app/hooks/useUser'
-import { useAuth } from '@/app/hooks/useAuth';
+import { useAuth } from '@/app/providers/AuthProvider';
 
 export function UserTemplate() {
   const { user, isLoading } = useUser();

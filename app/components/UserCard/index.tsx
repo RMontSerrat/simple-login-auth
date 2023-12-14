@@ -36,19 +36,24 @@ export function UserCard({ user, onLogout }: UserCardProps) {
       </Flex>
       <Flex mt="3" gap="1" direction="column">
         <Text as="div" size="2" color="gray">
-          <strong>Gender</strong>: {gender}
+          <strong>Gender</strong>:
+          <span>{gender}</span>
         </Text>
         <Text as="div" size="2" color="gray">
-          <strong>Age</strong>: {age}
+          <strong>Age</strong>:
+          <span>{age}</span>
         </Text>
         <Text as="div" size="2" color="gray">
-          <strong>Email</strong>: {email}
+          <strong>Email</strong>:
+          <span>{email}</span>
         </Text>
         <Text as="div" size="2" color="gray">
-          <strong>Phone</strong>: {phone}
+          <strong>Phone</strong>:
+          <span>{phone}</span>
         </Text>
         <Text as="div" size="2" color="gray">
-          <strong>Company</strong>: {companyName}
+          <strong>Company</strong>:
+          <span>{companyName}</span>
         </Text>
       </Flex>
       <Flex mt="3" justify="end">

@@ -2,7 +2,7 @@
 
 import useSWR from 'swr';
 import api from '@/app/services/api';
-import { useAuth } from '@/app/hooks/useAuth';
+import { useAuth } from '@/app/providers/AuthProvider';
 
 const fetcher = (url: string) => api.get(url).then(res => res.data);
 

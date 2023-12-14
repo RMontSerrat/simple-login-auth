@@ -1,10 +1,7 @@
-import { Flex } from '@radix-ui/themes'
-import { LoginForm } from '@/app/components/LoginForm'
+import LoginPage from '../templates/Login'
 
 export default function Login() {
   return (
-    <Flex>
-      <LoginForm />
-    </Flex>
+    <LoginPage />
   )
 }
